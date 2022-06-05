@@ -1,27 +1,56 @@
 # Control Velocidad
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Control de Velocidad de avance del robot Turtlebot3 mediante reguladores de tipo PID usando ROS2. Los nodos de ROS2 se han creado usando la herramienta de Code Generation de Simulink. De esta forma, el alumno puede crear fácilmente los controles en un entorno en el que está familiarizado
 
-Imagen simulink?
+![Vista general del modelo](docs\model-overview.png)
 
 ## Installation
+
 Este modelo está pensado para ser usado en MATLAB 2022a utilizando la librería ROS Toolbox.
 Para empezar, se necesita instalar MATLABy descargar el código de GitHub.
-###Si se tiene instalado Git 
+
+### Git
+
 ```bash
 git clone https://github.com/FranciscoBarCa/Control-Velocidad.git
 cd cd Control-Velocidad
 matlab -r EnsayoControlVelocidad #Asegurarse es 2022a
 ```
 
+En caso de no tener Git instalado puede descargar manualmente el repositiorio y descomprimirlo.
+
+### Build
+
+Una vez abierto el Simulink se ha de crear el código en C++ que se usa para crear el nodo en ROS2.
+Para ello usamos la opcción Build model dentro de Deployment.
+
+![Posición del botón build](docs\build-ribbon.png)
+
+Nótese que en la sección de Connect se tiene seleccionadas las opciones de ROS Network: ROS2 y la opcción Deploy to: Localhost.
+
+### Ajustes Adicionales
+
+Si se quieren usar varios robots Turtlebot al mismo tiempo hay que cambiar el DOMAIN_ID dentro de ROS2 para que cada robot trabaje en un entorno separado. Este ajuste tiene que cambiarse tanto en el propio robot como en el Simulink. Para cambiarlo, hay que ir a ROS Network dentro de Prepare.
+
+![Posición del botón build](docs\ros-ribbon.png)
+
+Dentro de este menú también se nos presenta la opcción de cambiar el middleware que usar en las comunicaciones. Existen tres opcciones soportadas por MATLAB.
+
+- rmw_fastrtps_cpp (Default)
+- rmw_fastrtps_dynamic_cpp
+- rmw_cyclonedds_cpp
+
+Normalmente la opcción por defecto no da problemas pero en caso contrario, se debe elegir rmw_cyclonedds_cpp. Este ajuste tambien ha de cambiarse en el archivo ConexionControlInterno.m.
 
 ## Usage
+
 Una vez creado el nodo con el comando build, no hace falta volver a usar el EnsayoControlVelocidad.slx salvo que se quiera hacer algun cambio al control.
 Para realizar el ensayo se usa la función EnsayoPC para ejecutar el ensayo con los parametros expuestos.
 
 ## License
+
 MIT License
 
 Copyright (c) 2022 Francisco Barragán
