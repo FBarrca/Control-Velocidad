@@ -8,5 +8,9 @@ src/
 *.cpp
 *.slxc
 *.sh
+*.slx.autosave
 SFB__Time_sec__SFB.mat
 Time_sec.mexw64
+rtwmakecfg.m
+Time_sec.tlc
+*_ert*
