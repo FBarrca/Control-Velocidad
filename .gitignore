@@ -1,3 +1,9 @@
++bus_conv_fcns/
+build/
+install/
+log/
+slprj/
+src/
 *.c
 *.cpp
 *.slxc
