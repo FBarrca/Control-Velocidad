@@ -9,19 +9,23 @@ Control de Velocidad de avance del robot Turtlebot3 mediante reguladores de tipo
 ## Installation
 
 Este modelo está pensado para ser usado en MATLAB 2022a utilizando la librería ROS Toolbox.
-Para empezar, se necesita instalar MATLABy descargar el código de GitHub.
+Para empezar, se necesita instalar MATLAB y descargar el código de GitHub.
 
 ### Git
 
 ```bash
 git clone https://github.com/FranciscoBarCa/Control-Velocidad.git
-cd cd Control-Velocidad
+cd Control-Velocidad
 matlab -r EnsayoControlVelocidad #Asegurarse es 2022a
 ```
 
 En caso de no tener Git instalado puede descargar manualmente el repositiorio y descomprimirlo.
 
-### Build
+### Build Time_sec C/C++ Code Block
+
+Antes de poder ejectuar el control hay que hacer un build al bloque Time_sec dentro del subsistema Envío ROS.
+
+### Build Simulink
 
 Una vez abierto el Simulink se ha de crear el código en C++ que se usa para crear el nodo en ROS2.
 Para ello usamos la opcción Build model dentro de Deployment.
