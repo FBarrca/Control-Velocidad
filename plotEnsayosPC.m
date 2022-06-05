@@ -38,7 +38,7 @@ for t = 1:5
         ant = act;
     end
 %     plot(Y(:,1),[Y(:,2)],'*')
-    plot(Yrec(:,1),[Yrec(:,2)],'-*')
+    plot(Yrec(:,1),[Yrec(:,2)],'*')
     xlim([0,Tsim]);
 end
 Fit_modelo
