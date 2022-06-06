@@ -3,6 +3,7 @@ build/
 install/
 log/
 slprj/
+bag/
 src/
 *.c
 *.cpp
