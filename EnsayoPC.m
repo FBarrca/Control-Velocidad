@@ -23,7 +23,8 @@ controlmsg.angular.x = double(1);
 send(controlPub,controlmsg);
 % 
 vsize = round(Tsim * 100);
-Message = receive(SignalSub, 5);
+receive(SignalSub, 5);receive(SignalSub, 5);receive(SignalSub, 5);
+Message =receive(SignalSub, 5);
 initialtime = double(Message.header.stamp.sec) + double(Message.header.stamp.nanosec)*1e-9; 
 time = 0;
 stepTime = 0;

@@ -1,7 +1,7 @@
 Tsim = 0.6;
 ref = 0.15;
 DOMAIN_ID = 30;
-K = 10;
+K = 20;
 Ti = 0;
 Td = 0;
 b = 1;
