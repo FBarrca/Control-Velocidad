@@ -8,7 +8,8 @@ b = 1;
 Derror = 0;
 clf
 [R,U,Y] = EnsayoPC(DOMAIN_ID,Tsim,0,K,Ti,Td,b,Derror);
-for t = 1:5
+for t = 1:1
+    
     pause(1)
     [R,U,Y] = EnsayoPC(DOMAIN_ID,Tsim,ref,K,Ti,Td,b,Derror);
     escalonencero = U(find(R(:,2)>0,1),1);

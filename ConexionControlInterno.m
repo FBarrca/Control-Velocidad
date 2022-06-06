@@ -19,8 +19,8 @@ fprintf("Despliegue del control:\n")
 if any(contains(ros2("node","list"),'/EnsayoControlVelocidad'))
     fprintf("    - Nodo '/EnsayoPolosInterno' ya estaba desplegado.\n")
 else
-    d = ros2device('localhost');
-    runNode(d,'EnsayoControlVelocidad')
+%     d = ros2device('localhost');
+%     runNode(d,'EnsayoControlVelocidad')
     fprintf("    - Control desplegado.\n")
     pause(10)
     if any(contains(ros2("node","list"),'/EnsayoControlVelocidad'))

@@ -64,7 +64,7 @@ Para realizar el ensayo se usa la función EnsayoPC para ejecutar el ensayo con 
         [turtlebot3_ros-3] [INFO] [diff_drive_controller]: Run!
         En caso contrario el robot tiene un error en su código propio de ROS o alguno de sus componentes como LIDAR o motores no está conectado.
 - ### Nodo '/EnsayoControlVelocidad' no encontrado en ROS2
-        Error interno de ROS2 al generar el nodo de MATLAB.Reinicie el ordenador.Asegurese que no se ha cambiado el nombre de ningun archivo.
+        Error interno de ROS2 al generar el nodo de MATLAB.Reinicie MATLAB.
 
 ## License
 
