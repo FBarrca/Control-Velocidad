@@ -1,10 +1,10 @@
-Tsim = 0.6;
-ref = 0.15;
+Tsim = 1;
+ref = 0.1;
 DOMAIN_ID = 30;
-K = 20;
+K = 0;
 Ti = 0;
 Td = 0;
-b = 1;
+b = 0;
 Derror = 0;
 clf
 [R,U,Y] = EnsayoPC(DOMAIN_ID,Tsim,0,K,Ti,Td,b,Derror);
