@@ -7,10 +7,10 @@ Td = 0;
 b = 0;
 Derror = 0;
 clf
-[R,U,Y] = EnsayoPC(DOMAIN_ID,Tsim,0,K,Ti,Td,b,Derror);
+[R,U,Y] = EnsayoPC(DOMAIN_ID,Tsim,0);
 for t = 1:5
     pause(1)
-    [R,U,Y] = EnsayoPC(DOMAIN_ID,Tsim,ref,K,Ti,Td,b,Derror);
+    [R,U,Y] = EnsayoPC(DOMAIN_ID,Tsim,ref);
     escalonencero = U(find(R(:,2)>0,1),1);
     if isempty(escalonencero)
         escalonencero = 0;
