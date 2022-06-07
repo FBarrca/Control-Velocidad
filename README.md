@@ -34,15 +34,6 @@ Para ello usamos la opcción Build model dentro de Deployment.
 
 Nótese que en la sección de Connect se tiene seleccionadas las opciones de ROS Network: ROS2 y la opcción Deploy to: Localhost.
 
-<div class="panel panel-info">
-**Note**
-{: .panel-heading}
-<div class="panel-body">
-
-NOTE DESCRIPTION
-
-</div>
-</div>
 ### Ajustes Adicionales
 
 Si se quieren usar varios robots Turtlebot al mismo tiempo hay que cambiar el DOMAIN_ID dentro de ROS2 para que cada robot trabaje en un entorno separado. Este ajuste tiene que cambiarse tanto en el propio robot como en el Simulink. Para cambiarlo, hay que ir a ROS Network dentro de Prepare.
