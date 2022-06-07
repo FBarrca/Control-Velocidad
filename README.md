@@ -34,6 +34,15 @@ Para ello usamos la opcción Build model dentro de Deployment.
 
 Nótese que en la sección de Connect se tiene seleccionadas las opciones de ROS Network: ROS2 y la opcción Deploy to: Localhost.
 
+<div class="panel panel-info">
+**Note**
+{: .panel-heading}
+<div class="panel-body">
+
+NOTE DESCRIPTION
+
+</div>
+</div>
 ### Ajustes Adicionales
 
 Si se quieren usar varios robots Turtlebot al mismo tiempo hay que cambiar el DOMAIN_ID dentro de ROS2 para que cada robot trabaje en un entorno separado. Este ajuste tiene que cambiarse tanto en el propio robot como en el Simulink. Para cambiarlo, hay que ir a ROS Network dentro de Prepare.
@@ -51,7 +60,17 @@ Normalmente la opcción por defecto no da problemas pero en caso contrario, se d
 ## Usage
 
 Una vez creado el nodo con el comando build, no hace falta volver a usar el EnsayoControlVelocidad.slx salvo que se quiera hacer algun cambio al control.
-Para realizar el ensayo se usa la función EnsayoPC para ejecutar el ensayo con los parametros expuestos.
+Para realizar el ensayo se usa la función EnsayoPC.m.
+
+```MATLAB
+[R,U,Y] = EnsayoPC(DOMAIN_ID,Tsim,ref)
+```
+
+Para invocar la función se especifica el dominio en el quese va a realizar el ensayo, el tiempo total de el ensayo y el tamaño del escalón a aplicar.
+Esta función nos devuelve la referencia mando y salida del ensayo.
+Estos datos se pueden usar para generar las gráficas del ensayo.
+
+Se ha incluido también se ha includo un archivo plotEnsayosPC.m que incluye una implemenación de las gráficas del ensayo.
 
 ## Errores tipicos
 
