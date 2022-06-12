@@ -1,14 +1,14 @@
 Tsim = 1;
-ref = 0.1;
+ref = 0.2;
+K=20
+Ti =0
+Td =0 
+b=1
+Ds=0    
 DOMAIN_ID = 30;
-K = 0;
-Ti = 0;
-Td = 0;
-b = 0;
-Derror = 0;
 clf
-[R,U,Y] = EnsayoPC(DOMAIN_ID,Tsim,0);
-for t = 1:5
+[R,U,Y] = EnsayoPC(DOMAIN_ID,Tsim*0.1,0);
+for t = 1:3
     pause(1)
     [R,U,Y] = EnsayoPC(DOMAIN_ID,Tsim,ref);
     escalonencero = U(find(R(:,2)>0,1),1);
@@ -39,6 +39,7 @@ for t = 1:5
     end
 %     plot(Y(:,1),[Y(:,2)],'*')
     plot(Yrec(:,1),[Yrec(:,2)],'*')
+    plot(R(:,1),[R(:,2)],'*')
     xlim([0,Tsim]);
 end
 Fit_modelo

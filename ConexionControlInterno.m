@@ -3,8 +3,8 @@ function [NoError] = ConexionControlInterno(DOMAIN_ID)
 %Lectura de constantes
 setenv("ROS_DOMAIN_ID",string(DOMAIN_ID))
 fprintf("Domain ID ROS2: %i \n",DOMAIN_ID)
-setenv("RMW_IMPLEMENTATION","rmw_cyclonedds_cpp")
-fprintf("Middleware: %s \n","rmw_cyclonedds_cpp")
+setenv("RMW_IMPLEMENTATION","rmw_fastrtps_cpp")
+fprintf("Middleware: %s \n","rmw_fastrtps_cpp")
 %Comprobación de la conexion /turtlebot3_node
 fprintf("Leyendo lista de nodos:\n")
 if any(contains(ros2("node","list"),'/turtlebot3_node'))

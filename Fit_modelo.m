@@ -1,11 +1,11 @@
 %mejor
-Kp = 0.062;
-seta_p = 0.7;
-wn_p = 23.5;
+Kp = 0.0648;
+seta_p = 1.0;
+wn_p = 28.5;
 s= tf("s");
 P = Kp/(1/wn_p^2*s^2 + 2*seta_p/wn_p*s + 1);
 
-retraso = 0.06; 
+retraso = 0.09; 
 sim_matlab = sim("SIM");
 hold on
 subplot(2,1,1);
