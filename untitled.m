@@ -1,6 +1,6 @@
-ipaddress = '192.168.93.51';
+ipaddress = '192.168.163.51';
 d = ros2device(ipaddress,'ubuntu','turtlebot');
 d.ROS2Folder = '/opt/ros/foxy';
 d.ROS2Workspace = '~/turtlebot3_ws'
-% runNode(d,'EnsayoControlVelocidadRASP')
-runNode(d,'Angulo')
+runNode(d,'EnsayoControlVelocidadRASP')
+% runNode(d,'Angulo')
