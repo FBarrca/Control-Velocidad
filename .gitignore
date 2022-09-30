@@ -38,5 +38,14 @@ octave-workspace
 /install    
 /log
 /src
+#generated code
+*.c
+*.cpp
+*.h
+*.hpp
+*.mexw64*
+*.mexw32*
+*.tlc
+
 # folders ending wiith ert_rtw
 /*ert_rtw
