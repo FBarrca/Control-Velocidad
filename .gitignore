@@ -1,6 +1,8 @@
 # Windows default autosave extension
 *.asv
 
+# Matlab variable file
+*.mat
 # OSX / *nix default autosave extension
 *.m~
 
@@ -46,6 +48,6 @@ octave-workspace
 *.mexw64*
 *.mexw32*
 *.tlc
-
+*.tgz
 # folders ending wiith ert_rtw
 /*ert_rtw
