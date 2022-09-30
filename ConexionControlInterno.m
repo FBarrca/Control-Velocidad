@@ -1,10 +1,11 @@
-function [NoError] = ConexionControlInterno(DOMAIN_ID)
+function [NoError] = ConexionControlInterno(ipaddress,DOMAIN_ID)
 %%%%%%%%%%%%%%%%%%%%%%%%
 %Lectura de constantes
 setenv("ROS_DOMAIN_ID",string(DOMAIN_ID))
-fprintf("Domain ID ROS2: %i \n",DOMAIN_ID)
-setenv("RMW_IMPLEMENTATION","rmw_cyclonedds_cpp")
-fprintf("Middleware: %s \n","rmw_cyclonedds_cpp")
+fprintf("Domain ID ROS2: %s \n",DOMAIN_ID)
+middleware ="rmw_cyclonedds_cpp";
+setenv("RMW_IMPLEMENTATION",middleware) %rmw_cyclonedds_cpp 
+fprintf("Middleware: %s \n",middleware)
 %Comprobación de la conexion /turtlebot3_node
 fprintf("Leyendo lista de nodos:\n")
 if any(contains(ros2("node","list"),'/turtlebot3_node'))
@@ -19,8 +20,12 @@ fprintf("Despliegue del control:\n")
 if any(contains(ros2("node","list"),'/EnsayoControlVelocidad'))
     fprintf("    - Nodo '/EnsayoPolosInterno' ya estaba desplegado.\n")
 else
-    d = ros2device('localhost');
-    runNode(d,'EnsayoControlVelocidad')
+    setenv("RMW_IMPLEMENTATION","rmw_cyclonedds_cpp")
+    
+    d = ros2device(ipaddress,'ubuntu','turtlebot');
+    d.ROS2Folder = '/opt/ros/foxy';
+    d.ROS2Workspace = '~/turtlebot3_ws'
+    runNode(d,'EnsayoControlVelocidadRASP2')
     fprintf("    - Control desplegado.\n")
     pause(10)
     if any(contains(ros2("node","list"),'/EnsayoControlVelocidad'))

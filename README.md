@@ -30,7 +30,7 @@ Antes de poder ejectuar el control hay que hacer un build al bloque Time_sec den
 Una vez abierto el Simulink se ha de crear el código en C++ que se usa para crear el nodo en ROS2.
 Para ello usamos la opcción Build model dentro de Deployment.
 
-![Posición del botón build](docs\build-ribbon.png)
+![Posición del botón build](docs/build-ribbon.png)
 
 Nótese que en la sección de Connect se tiene seleccionadas las opciones de ROS Network: ROS2 y la opcción Deploy to: Localhost.
 
@@ -38,7 +38,7 @@ Nótese que en la sección de Connect se tiene seleccionadas las opciones de ROS
 
 Si se quieren usar varios robots Turtlebot al mismo tiempo hay que cambiar el DOMAIN_ID dentro de ROS2 para que cada robot trabaje en un entorno separado. Este ajuste tiene que cambiarse tanto en el propio robot como en el Simulink. Para cambiarlo, hay que ir a ROS Network dentro de Prepare.
 
-![Posición del botón build](docs\ros-ribbon.png)
+![Posición del botón build](docs/ros-ribbon.png)
 
 Dentro de este menú también se nos presenta la opcción de cambiar el middleware que usar en las comunicaciones. Existen tres opcciones soportadas por MATLAB.
 
@@ -51,28 +51,28 @@ Normalmente la opcción por defecto no da problemas pero en caso contrario, se d
 ## Usage
 
 Una vez creado el nodo con el comando build, no hace falta volver a usar el EnsayoControlVelocidad.slx salvo que se quiera hacer algun cambio al control.
-Para realizar el ensayo se usa la función EnsayoPC para ejecutar el ensayo con los parametros expuestos.
+Para realizar el ensayo se usa la función EnsayoPC.m.
 
-## License
+```MATLAB
+[R,U,Y] = EnsayoPC(DOMAIN_ID,Tsim,ref)
+```
 
-MIT License
+Para invocar la función se especifica el dominio en el quese va a realizar el ensayo, el tiempo total de el ensayo y el tamaño del escalón a aplicar.
+Esta función nos devuelve la referencia mando y salida del ensayo.
+Estos datos se pueden usar para generar las gráficas del ensayo.
 
-Copyright (c) 2022 Francisco Barragán
+Se ha incluido también se ha includo un archivo plotEnsayosPC.m que incluye una implemenación de las gráficas del ensayo.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+## Errores tipicos
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+- ### S-Function Builder Block 'EnsayoControIVeIocidad/Envio ROSIC,' /C\*+ Code Blockl' has encountered an error.
+        No se ha realizado el pasoBuild Time_sec C/C++ Code Block. No seencuentran los archivos generados.
+- ### Unable to generate code for model 'EnsayoControIVeIocicad', when an application with the same name as model is already running.
+        Cerrar la aplicación command promt que hay abierta antes de volver a hacer deployment.
+- ### No se encuentra el turtlebot3_node Asegurese que el robot está encendido y la configuración de domain es correcta
+        Concectarse al robot por SSH y esperar a obtener en consola.
+        [turtlebot3_ros-3] [INFO] [diff_drive_controller]: Run!
+        En caso contrario el robot tiene un error en su código propio de ROS o alguno de sus componentes como LIDAR o motores no está conectado.
+- ### Nodo '/EnsayoControlVelocidad' no encontrado en ROS2
+        Error interno de ROS2 al generar el nodo de MATLAB.Reinicie el ordenador.Asegurese que no se ha cambiado el nombre de ningun archivo.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.

@@ -1,4 +1,4 @@
-function [R,U,Y] = EnsayoPC(DOMAIN_ID,Tsim,ref,K,Ti,Td,b,Derror)
+function [R,U,Y] = EnsayoPC(DOMAIN_ID,Tsim,ref)
 %EnsayoPC Summary of this function goes here
 %   Detailed explanation goes here
 clc
@@ -15,15 +15,16 @@ SignalSub = ros2subscriber(ControlNode,"/signals","History","keeplast","Depth",1
 RPub= ros2publisher(ControlNode,"/ref","std_msgs/Float32");
 Rmsg = ros2message(RPub);
 Rmsg.data = single(ref);
-controlPub= ros2publisher(ControlNode,"/control","geometry_msgs/Twist");
-controlmsg = ros2message(controlPub);
-controlmsg.linear.x = double(K);
-controlmsg.angular.x = double(1);
-% controlmsg.data = single(K);
-send(controlPub,controlmsg);
+% controlPub= ros2publisher(ControlNode,"/control","geometry_msgs/Twist");
+% controlmsg = ros2message(controlPub);
+% controlmsg.linear.x = double(K);
+% controlmsg.angular.x = double(1);
+% % controlmsg.data = single(K);
+% send(controlPub,controlmsg);
 % 
 vsize = round(Tsim * 100);
-Message = receive(SignalSub, 5);
+receive(SignalSub, 5);receive(SignalSub, 5);receive(SignalSub, 5);
+Message =receive(SignalSub, 5);
 initialtime = double(Message.header.stamp.sec) + double(Message.header.stamp.nanosec)*1e-9; 
 time = 0;
 stepTime = 0;

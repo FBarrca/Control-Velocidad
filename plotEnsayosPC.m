@@ -1,44 +1,43 @@
-Tsim = 0.6;
-ref = 0.15;
-DOMAIN_ID = 30;
-K = 10;
-Ti = 0;
-Td = 0;
-b = 1;
-Derror = 0;
-clf
-[R,U,Y] = EnsayoPC(DOMAIN_ID,Tsim,0,K,Ti,Td,b,Derror);
-for t = 1:5
-    pause(1)
-    [R,U,Y] = EnsayoPC(DOMAIN_ID,Tsim,ref,K,Ti,Td,b,Derror);
-    escalonencero = U(find(R(:,2)>0,1),1);
-    if isempty(escalonencero)
-        escalonencero = 0;
-    end
-    U(:,1) = U(:,1) - escalonencero;
-    Y(:,1) = U(:,1);
-    R(:,1) = U(:,1);
-    subplot(2,1,1);
-    hold on
-    
-    plot(U(:,1),[U(:,2)],'*')
-    xlim([0,Tsim]);
-    subplot(2,1,2);
-    hold on
-    Yrec= Y(1,:);
-    ant = Yrec;
-    for i = 2:length(Y)
-        act = Y(i,:);
-        if(act(2)>0.0001 && ant(2)==0)
-            Yrec = [Yrec;Y(i-3,:);];
-        end
-        if(abs(act(2) - ant(2))>0.01)
-            Yrec = [Yrec;act];
-        end
-        ant = act;
-    end
-%     plot(Y(:,1),[Y(:,2)],'*')
-    plot(Yrec(:,1),[Yrec(:,2)],'*')
-    xlim([0,Tsim]);
+clear
+if ConexionControlInterno('192.168.97.51','30')==0
+    return
 end
-Fit_modelo
+
+% Parametros PID
+% K = 7.79;
+% Ti = 0.179;
+% Td =0.0432;
+% b=2;
+% N = 4.65;
+% AD=0;
+% Parametros PI
+K = 7.27;
+Ti = 0.065;
+Td =0;
+b=0.8;
+N = 5;
+AD=0;
+% % Parametros P
+% K = 10;
+% Ti = inf;
+% Td =0;
+% b=1;
+% N =80;
+% AD=0;
+% 
+
+
+clf
+for t = 1:1    
+    ensayo = sim("Monitorizacion");
+    Y = ensayo.ensayo_salida;
+    R = ensayo.ensayo_ref;
+    U = ensayo.ensayo_mando;
+    [R,U,Y] = plotEnsayo(K,Ti,Td,b,R,U,Y);
+    hold on
+end
+
+
+% stopNode(d,'EnsayoControlVelocidadRASP2')
+Tsim = U(end,1) 
+% Fit_modelo
