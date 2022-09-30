@@ -43,7 +43,7 @@ classdef (StrictDefaults)ExampleHelperSimulationRateControl < matlab.System
     
     properties(Nontunable)
         %SampleTime The desired update interval in wall time (seconds)
-        SampleTime = 0.005
+        SampleTime = 0.01
     end
     
     properties(Access = private)

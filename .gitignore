@@ -1,17 +1,42 @@
-+bus_conv_fcns/
-build/
-install/
-log/
+# Windows default autosave extension
+*.asv
+
+# OSX / *nix default autosave extension
+*.m~
+
+# Compiled MEX binaries (all platforms)
+*.mex*
+
+# Packaged app and toolbox files
+*.mlappinstall
+*.mltbx
+
+# Generated helpsearch folders
+helpsearch*/
+
+# Simulink code generation folders
 slprj/
-bag/
-src/
-*.c
-*.cpp
+sccprj/
+
+# Matlab code generation folders
+codegen/
+
+# Simulink autosave extension
+*.autosave
+
+# Simulink cache files
 *.slxc
-*.sh
-*.slx.autosave
-SFB__Time_sec__SFB.mat
-Time_sec.mexw64
-rtwmakecfg.m
-Time_sec.tlc
-*_ert*
+
+# Octave session info
+octave-workspace
+
+#bag
+/bag
+/+bus_conv_fcns
+#ros
+/build
+/install    
+/log
+/src
+# folders ending wiith ert_rtw
+/*ert_rtw
