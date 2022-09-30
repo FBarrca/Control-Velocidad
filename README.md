@@ -5,7 +5,7 @@
 Control de Velocidad de avance del robot Turtlebot3 mediante reguladores de tipo PID usando ROS2. Los nodos de ROS2 se han creado usando la herramienta de Code Generation de Simulink. De esta forma, el alumno puede crear fácilmente los controles en un entorno en el que está familiarizado
 
 ![Vista general del modelo ](docs/model-overview.png)
-![Posición del botón build](docs/build-ribbon.png)
+<!-- ![Posición del botón build](docs/build-ribbon.png) -->
 
 ## Installation
 
